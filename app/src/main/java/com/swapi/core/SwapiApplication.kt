@@ -1,6 +1,6 @@
 package com.swapi.core
 
-import com.swapi.core.dagger.DaggerAppComponent
+import com.swapi.core.dagger.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import jp.wasabeef.glide.transformations.BuildConfig

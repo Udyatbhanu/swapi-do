@@ -2,6 +2,6 @@ package com.swapi.presentation.search.ui
 
 import dagger.android.support.DaggerFragment
 
-class SearchFragment : DaggerFragment() {
+class SearchResultsFragment : DaggerFragment(){
 
 }
