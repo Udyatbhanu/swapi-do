@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
@@ -18,6 +19,11 @@ class PeopleFragment : DaggerFragment(){
 
     private lateinit var binding: PeopleFragmentBinding
     private lateinit var peopleViewModel: PeopleViewModel
+
+    private lateinit var peopleListAdapter: PeopleListAdapter
+
+
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     override fun onCreateView(
@@ -36,10 +42,27 @@ class PeopleFragment : DaggerFragment(){
         super.onActivityCreated(savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.show()
         initViewModels()
-//        initUi()
-//        subscribeUi(binding)
+        initUi()
+        subscribeUi()
 
 
+    }
+
+
+    /**
+     *
+     */
+    private fun subscribeUi() {
+        peopleViewModel.getPeople.observe(viewLifecycleOwner, Observer {peopleListItemViewModels ->
+            peopleListAdapter = PeopleListAdapter(peopleListItemViewModels)
+            binding.peopleList.adapter = peopleListAdapter
+
+        })
+
+    }
+
+    private fun initUi() {
+        binding.peopleList
     }
 
     private fun initViewModels(){
