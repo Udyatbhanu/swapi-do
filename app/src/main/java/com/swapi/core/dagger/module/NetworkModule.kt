@@ -1,7 +1,7 @@
 package com.swapi.core.dagger.module
 
 import com.swapi.data.api.Endpoints
-import com.swapi.data.api.SearchService
+import com.swapi.data.api.PeopleApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -14,14 +14,13 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 @Module
 class NetworkModule {
 
-    /**
-     *
-     */
-    @Provides
-    fun provideSearchApi(retrofit: Retrofit): SearchService {
-        return retrofit.create(SearchService::class.java)
-    }
 
+
+
+    @Provides
+    fun providePeopleApi(retrofit: Retrofit): PeopleApi {
+        return retrofit.create(PeopleApi::class.java)
+    }
 
     /**
      *
