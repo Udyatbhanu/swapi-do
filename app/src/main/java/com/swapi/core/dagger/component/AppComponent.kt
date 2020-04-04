@@ -1,9 +1,7 @@
 package com.swapi.core.dagger.component
 
 import android.app.Application
-import com.swapi.core.dagger.module.AppModule
-import com.swapi.core.dagger.module.BindingModule
-import com.swapi.core.dagger.module.NetworkModule
+import com.swapi.core.dagger.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -12,7 +10,17 @@ import dagger.android.DaggerApplication
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, AppModule::class, BindingModule::class, NetworkModule::class])
+@Component(
+    modules = [
+        AndroidInjectionModule::class,
+        ViewModelFactoryModule::class,
+        AppModule::class,
+        BindingModule::class,
+        NetworkModule::class,
+        ViewModelModule::class,
+        UseCaseModule::class
+    ]
+)
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
     @Component.Builder

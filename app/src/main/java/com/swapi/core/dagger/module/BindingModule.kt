@@ -2,8 +2,9 @@ package com.swapi.core.dagger.module
 
 import com.swapi.presentation.MainActivity
 import com.swapi.presentation.MainFragment
-import com.swapi.presentation.search.ui.SearchFragment
-import com.swapi.presentation.search.ui.SearchResultsFragment
+import com.swapi.presentation.films.ui.FilmsFragment
+import com.swapi.presentation.people.ui.PeopleFragment
+
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,11 +17,17 @@ abstract class BindingModule {
     abstract fun bindMainActivity(): MainActivity
 
     @ContributesAndroidInjector
-    abstract fun bindMainFragment(): MainFragment
+    abstract fun bindMMainFragment(): MainFragment
+
+
 
     @ContributesAndroidInjector
-    abstract fun bindSearchFragment(): SearchFragment
+    abstract fun bindPeopleFragment(): PeopleFragment
 
     @ContributesAndroidInjector
-    abstract fun bindSearchResultsFragment(): SearchResultsFragment
+    abstract fun bindFilmFragment(): FilmsFragment
+
+
+
+
 }

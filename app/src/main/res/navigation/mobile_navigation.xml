@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/mobile_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.swapi.presentation.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_peopleFragment"
+            app:destination="@id/peopleFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_filmsFragment"
+            app:destination="@id/filmsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/peopleFragment"
+        android:name="com.swapi.presentation.people.ui.PeopleFragment"
+        android:label="PeopleFragment" >
+        <action
+            android:id="@+id/action_peopleFragment_to_peopleDetailsFragment"
+            app:destination="@id/peopleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/peopleDetailsFragment"
+        android:name="com.swapi.presentation.people.ui.PeopleDetailsFragment"
+        android:label="PeopleDetailsFragment" >
+        <action
+            android:id="@+id/action_peopleDetailsFragment_to_filmsFragment"
+            app:destination="@id/filmsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmsFragment"
+        android:name="com.swapi.presentation.films.ui.FilmsFragment"
+        android:label="FilmsFragment" />
+</navigation>
