@@ -3,5 +3,10 @@
     <dimen name="toolbar_height">48dp</dimen>
     <dimen name="item_margin">16dp</dimen>
 
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="font_title_size">16sp</dimen>
+
+
+    <dimen name="font_body_s_size">12sp</dimen>
 
 </resources>
