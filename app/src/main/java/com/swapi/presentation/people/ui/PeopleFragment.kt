@@ -2,6 +2,9 @@ package com.swapi.presentation.people.ui
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,10 +72,23 @@ class PeopleFragment : DaggerFragment(){
      */
     private fun subscribeUi() {
         peopleViewModel.getPeople.observe(viewLifecycleOwner, Observer {peopleListItemViewModels ->
-            peopleListAdapter = PeopleListAdapter(peopleListItemViewModels)
+            peopleListAdapter = PeopleListAdapter()
+            peopleListAdapter.onResults(peopleListItemViewModels)
             peopleList.adapter = peopleListAdapter
 
         })
+
+        searchInputText.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                peopleViewModel.onQueryChange(s.toString())
+            }
+        } )
 
     }
 
@@ -88,11 +104,7 @@ class PeopleFragment : DaggerFragment(){
 
     }
 
-    private fun initToolbar(){
 
-
-//        toolbar.navigationIcon.onC
-    }
 
     private fun initViewModels(){
 

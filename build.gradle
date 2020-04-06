@@ -20,7 +20,8 @@ buildscript {
             glide           : '4.11.0',
             transformations : '4.0.1',
             mockitoInline   : '2.8.47',
-            mockitoKotlin   : '2.0.0-RC3'
+            mockitoKotlin   : '2.0.0-RC3',
+            compiler_version : '3.1.4'
 
     ]
     repositories {

@@ -7,6 +7,10 @@ import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
+
+/**
+ *
+ */
 @Singleton
 class PeopleRepositoryImpl @Inject constructor(private val peopleApi: PeopleApi) :
     PeopleRepository {
@@ -17,6 +21,18 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleApi: PeopleApi)
      */
     override fun getPeople(): Single<List<People>> {
         return peopleApi.getPeople().map {
+            it.results.map { people ->
+                People(people.name, people.films, people.species, people.vehicles, people.starships)
+            }
+        }
+    }
+
+
+    /**
+     * For search use case
+     */
+    override fun searchPeople(query: String): Single<List<People>> {
+        return peopleApi.searchPeople(query).map {
             it.results.map { people ->
                 People(people.name, people.films, people.species, people.vehicles, people.starships)
             }

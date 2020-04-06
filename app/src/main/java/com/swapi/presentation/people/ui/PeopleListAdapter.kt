@@ -12,10 +12,10 @@ import com.swapi.presentation.people.viewmodel.PeopleListItemViewModel
 /**
  * https://www.zoftino.com/passing-data-between-android-fragments-using-viewmodel
  */
-class PeopleListAdapter (private val people : ArrayList<PeopleListItemViewModel>) :
+class PeopleListAdapter () :
         RecyclerView.Adapter<PeopleListAdapter.ViewHolder>() {
 
-
+    private var people: List<PeopleListItemViewModel> = emptyList()
     /**
      *
      */
@@ -39,6 +39,15 @@ class PeopleListAdapter (private val people : ArrayList<PeopleListItemViewModel>
     override fun getItemCount(): Int {
             return people.size
         }
+
+
+    /**
+     *
+     */
+    public fun onResults(people: List<PeopleListItemViewModel>){
+        this.people = people
+        notifyDataSetChanged()
+    }
 
 
     /**

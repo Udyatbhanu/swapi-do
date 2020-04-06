@@ -7,4 +7,6 @@ interface PeopleRepository {
 
     fun getPeople(): Single<List<People>>
 
+    fun searchPeople(query : String): Single<List<People>>
+
 }
