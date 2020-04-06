@@ -8,6 +8,10 @@ import com.swapi.R
 import com.swapi.databinding.PeopleListItemBinding
 import com.swapi.presentation.people.viewmodel.PeopleListItemViewModel
 
+
+/**
+ * https://www.zoftino.com/passing-data-between-android-fragments-using-viewmodel
+ */
 class PeopleListAdapter (private val people : ArrayList<PeopleListItemViewModel>) :
         RecyclerView.Adapter<PeopleListAdapter.ViewHolder>() {
 
@@ -41,8 +45,8 @@ class PeopleListAdapter (private val people : ArrayList<PeopleListItemViewModel>
      *
      */
     override fun onBindViewHolder(holder: PeopleListAdapter.ViewHolder, position: Int) {
-            val featuredCategoriesItemViewModel = people[position]
-            holder.bind( featuredCategoriesItemViewModel)
+            val peopleListItemViewModel = people[position]
+            holder.bind( peopleListItemViewModel)
         }
 
         class ViewHolder(private val binding : PeopleListItemBinding ) :
@@ -56,6 +60,10 @@ class PeopleListAdapter (private val people : ArrayList<PeopleListItemViewModel>
                 with(binding) {
 
                     viewModel = peopleListItemViewModel
+
+                    binding.mainLayout.setOnClickListener{
+                        peopleListItemViewModel.name
+                    }
                 }
 
             }
