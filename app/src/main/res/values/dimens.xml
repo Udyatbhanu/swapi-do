@@ -5,6 +5,7 @@
 
     <dimen name="space_8">8dp</dimen>
     <dimen name="font_title_size">16sp</dimen>
+    <dimen name="space_4">4dp</dimen>
 
 
     <dimen name="font_body_s_size">12sp</dimen>
