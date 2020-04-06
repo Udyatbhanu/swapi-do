@@ -20,7 +20,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/placeHolderCardView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_4"
             android:layout_marginEnd="@dimen/space_4"
             android:layout_marginStart="@dimen/space_4"
@@ -100,6 +100,35 @@
                         />
                     <TextView
                         android:id="@+id/massValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.5"
+                        android:text="@{viewModel.name}"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/filmsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardview_shadow_start_color"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/massLayout"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:id="@+id/films"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.5"
+                        android:text="@{viewModel.name}"
+                        />
+                    <TextView
+                        android:id="@+id/fimlsValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
