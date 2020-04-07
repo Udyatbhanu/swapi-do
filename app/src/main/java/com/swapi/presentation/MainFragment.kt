@@ -11,10 +11,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.swapi.R
 import com.swapi.data.Images
 import com.swapi.databinding.MainFragmentBinding
 import dagger.android.support.DaggerFragment
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 import kotlinx.android.synthetic.main.main_fragment.*
 
@@ -45,11 +47,16 @@ class MainFragment : DaggerFragment() {
 
     private fun initUI() {
 
-        val requestOptions = RequestOptions()
-            .diskCacheStrategy(DiskCacheStrategy.NONE) // because file name is always same
-            .skipMemoryCache(true)
 
+        //Background
+        Glide.with(binding.root.context)
+            .asBitmap()
+            .load(Images.BACKGROUND)
+            .apply(bitmapTransform(BlurTransformation(25, 5)))
+            .centerCrop()
+            .into(binding.background)
 
+        //Banner
         Glide.with(binding.root.context)
             .asBitmap()
             .load(Images.HOME_IMAGE)
@@ -57,6 +64,7 @@ class MainFragment : DaggerFragment() {
             .into(binding.homeBannerImage)
 
 
+        //People
         Glide.with(binding.root.context)
             .asBitmap()
             .load(Images.PEOPLE_IMAGE)
@@ -68,9 +76,9 @@ class MainFragment : DaggerFragment() {
      */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        testButton.setOnClickListener{
-//            Navigation.findNavController(binding.root).navigate(R.id.peopleFragment)
-//        }
+        peopleLayout.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.peopleFragment)
+        }
     }
 
 
