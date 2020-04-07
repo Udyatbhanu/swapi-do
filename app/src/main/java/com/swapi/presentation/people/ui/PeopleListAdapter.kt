@@ -2,10 +2,14 @@ package com.swapi.presentation.people.ui;
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.swapi.R
 import com.swapi.databinding.PeopleListItemBinding
+import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleListItemViewModel
 
 
@@ -64,14 +68,21 @@ class PeopleListAdapter () :
             fun bind(
 
                 peopleListItemViewModel: PeopleListItemViewModel
+
             ) {
 
                 with(binding) {
 
                     viewModel = peopleListItemViewModel
-
+                    val direction =
+                PeopleFragmentDirections.actionPeopleFragmentToPeopleDetailsFragment()
                     binding.mainLayout.setOnClickListener{
-                        peopleListItemViewModel.name
+
+
+
+                        var bundle = bundleOf("userName" to peopleListItemViewModel.name)
+//                        sharedViewModel.selectedPersonItem
+                        it.findNavController().navigate(R.id.action_peopleFragment_to_peopleDetailsFragment, bundle)
                     }
                 }
 

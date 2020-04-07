@@ -26,6 +26,9 @@
         android:id="@+id/peopleDetailsFragment"
         android:name="com.swapi.presentation.people.ui.PeopleDetailsFragment"
         android:label="PeopleDetailsFragment" >
+
+        <argument android:name="peopleName"
+            android:defaultValue="name"/>
         <action
             android:id="@+id/action_peopleDetailsFragment_to_filmsFragment"
             app:destination="@id/filmsFragment" />

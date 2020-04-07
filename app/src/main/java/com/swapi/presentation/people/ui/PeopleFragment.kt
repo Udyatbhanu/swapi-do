@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
 import com.swapi.databinding.PeopleFragmentBinding
+import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleViewModel
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.people_fragment.*
@@ -29,6 +30,8 @@ class PeopleFragment : DaggerFragment(){
 
     private lateinit var binding: PeopleFragmentBinding
     private lateinit var peopleViewModel: PeopleViewModel
+
+    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var peopleListAdapter: PeopleListAdapter
 
@@ -110,6 +113,7 @@ class PeopleFragment : DaggerFragment(){
 
         activity?.let {
             peopleViewModel = ViewModelProvider(it, viewModelFactory).get(PeopleViewModel::class.java)
+            sharedViewModel = ViewModelProvider(it, viewModelFactory).get(SharedViewModel::class.java)
         }
 
 

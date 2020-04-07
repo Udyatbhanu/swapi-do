@@ -2,6 +2,7 @@ package com.swapi.core.dagger.module
 
 import androidx.lifecycle.ViewModel
 import com.swapi.core.dagger.ViewModelKey
+import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleDetailsViewModel
 import com.swapi.presentation.people.viewmodel.PeopleViewModel
 import dagger.Binds
@@ -20,5 +21,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PeopleDetailsViewModel::class)
     internal abstract  fun bindPeopleDetailsViewModel(viewModel: PeopleDetailsViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SharedViewModel::class)
+    internal abstract  fun bindSharedViewModel(sharedViewModel: SharedViewModel) : ViewModel
+
 
 }
