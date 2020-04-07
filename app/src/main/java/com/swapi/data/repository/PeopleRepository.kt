@@ -9,4 +9,6 @@ interface PeopleRepository {
 
     fun searchPeople(query : String): Single<List<People>>
 
+
+    fun getPerson(id : String): Single<People>
 }

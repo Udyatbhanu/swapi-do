@@ -39,4 +39,12 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleApi: PeopleApi)
         }
     }
 
+
+    /**
+     *
+     */
+    override fun getPerson(id: String): Single<People> {
+        return peopleApi.getPerson(id)
+    }
+
 }
