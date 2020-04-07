@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
+
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.swapi.R
 import com.swapi.data.Images
@@ -56,13 +53,6 @@ class MainFragment : DaggerFragment() {
             .centerCrop()
             .into(binding.background)
 
-        //Banner
-        Glide.with(binding.root.context)
-            .asBitmap()
-            .load(Images.HOME_IMAGE)
-            .centerCrop()
-            .into(binding.homeBannerImage)
-
 
         //People
         Glide.with(binding.root.context)
@@ -70,6 +60,31 @@ class MainFragment : DaggerFragment() {
             .load(Images.PEOPLE_IMAGE)
             .centerCrop()
             .into(binding.people)
+
+
+        //Films
+        Glide.with(binding.root.context)
+            .asBitmap()
+            .load(Images.FILMS)
+            .centerCrop()
+            .into(binding.films)
+
+        //Planets
+        Glide.with(binding.root.context)
+            .asBitmap()
+            .load(Images.PLANETS)
+            .centerCrop()
+            .into(binding.planets)
+
+
+        //Starships
+        Glide.with(binding.root.context)
+            .asBitmap()
+            .load(Images.STARSHIPS)
+            .centerCrop()
+            .into(binding.starships)
+
+
     }
     /**
      *

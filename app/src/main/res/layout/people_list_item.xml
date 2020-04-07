@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_weight="0.5"
-                        android:text="@{viewModel.name}"
+                        android:text="@string/height"
                        />
                     <TextView
                         android:id="@+id/heightValue"
@@ -74,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_weight="0.5"
-                        android:text="@{viewModel.name}"
+                        android:text="@{viewModel.height}"
                         />
                 </LinearLayout>
 
@@ -94,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_weight="0.5"
-                        android:text="@{viewModel.name}"
+                        android:text="@string/mass"
                         />
                     <TextView
                         android:id="@+id/massValue"
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_weight="0.5"
-                        android:text="@{viewModel.name}"
+                        android:text="@{viewModel.mass}"
                         />
                 </LinearLayout>
 
@@ -122,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_weight="0.5"
-                        android:text="@{viewModel.name}"
+                        android:text="@string/films_count"
                         />
                     <TextView
                         android:id="@+id/fimlsValue"
@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_weight="0.5"
-                        android:text="@{viewModel.name}"
+                        android:text="@{viewModel.filmCount}"
                         />
                 </LinearLayout>
 

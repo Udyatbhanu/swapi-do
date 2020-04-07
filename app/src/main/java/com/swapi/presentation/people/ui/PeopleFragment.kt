@@ -16,12 +16,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
+import com.swapi.data.Images
 import com.swapi.databinding.PeopleFragmentBinding
 import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleViewModel
 import dagger.android.support.DaggerFragment
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.people_fragment.*
 import javax.inject.Inject
 
@@ -103,6 +107,22 @@ class PeopleFragment : DaggerFragment(){
 
         //We could use databinding or ktx extensions
         peopleList.itemAnimator = DefaultItemAnimator()
+
+
+        Glide.with(binding.root.context)
+            .asBitmap()
+            .load(Images.PEOPLE_BANNER_IMAGE)
+            .centerCrop()
+            .into(binding.peopleBannerImage)
+
+
+//        Glide.with(binding.root.context)
+//            .asBitmap()
+//            .load(Images.BACKGROUND)
+//            .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 5)))
+//            .centerCrop()
+//            .into(binding.background)
+
 
 
     }
