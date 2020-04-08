@@ -94,6 +94,13 @@ class MainFragment : DaggerFragment() {
         peopleLayout.setOnClickListener{
             Navigation.findNavController(binding.root).navigate(R.id.peopleFragment)
         }
+
+
+        films.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.filmsFragment)
+        }
+
+        filmsLayout
     }
 
 

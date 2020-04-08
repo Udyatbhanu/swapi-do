@@ -43,9 +43,6 @@ class PeopleDetailsViewModel @Inject constructor(
 
     }
 
-    fun  setPerson(people: People){
-
-    }
 
 
     private fun onResponse(people: People) {

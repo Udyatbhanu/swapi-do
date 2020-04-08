@@ -15,14 +15,11 @@ import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
 import com.swapi.data.Images
 import com.swapi.databinding.PeopleDetailsFragmentBinding
-import com.swapi.databinding.PeopleFragmentBinding
-import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleDetailsViewModel
-import com.swapi.presentation.people.viewmodel.PeopleViewModel
 import dagger.android.support.DaggerFragment
 import jp.wasabeef.glide.transformations.BlurTransformation
-import kotlinx.android.synthetic.main.people_details_fragment.view.*
-import kotlinx.android.synthetic.main.people_fragment.*
+import kotlinx.android.synthetic.main.fragment_search.*
+
 import javax.inject.Inject
 
 class PeopleDetailsFragment : DaggerFragment(){

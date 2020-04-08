@@ -1,7 +1,6 @@
 package com.swapi.core.dagger.module
 
-import com.swapi.data.api.Endpoints
-import com.swapi.data.api.PeopleApi
+import com.swapi.data.api.*
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -15,11 +14,24 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 class NetworkModule {
 
 
+    @Provides
+    fun provideStarshipsApi(retrofit: Retrofit): StarshipsApi {
+        return retrofit.create(StarshipsApi::class.java)
+    }
 
+    @Provides
+    fun providePlanetsApi(retrofit: Retrofit): PlanetsApi {
+        return retrofit.create(PlanetsApi::class.java)
+    }
 
     @Provides
     fun providePeopleApi(retrofit: Retrofit): PeopleApi {
         return retrofit.create(PeopleApi::class.java)
+    }
+
+    @Provides
+    fun provideFilmsApi(retrofit: Retrofit): FilmsApi {
+        return retrofit.create(FilmsApi::class.java)
     }
 
     /**

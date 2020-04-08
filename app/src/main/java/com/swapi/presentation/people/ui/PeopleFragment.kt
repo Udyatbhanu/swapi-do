@@ -4,35 +4,32 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
 import com.swapi.data.Images
-import com.swapi.databinding.PeopleFragmentBinding
+import com.swapi.databinding.ResourcesFragmentBinding
 import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleViewModel
 import dagger.android.support.DaggerFragment
-import jp.wasabeef.glide.transformations.BlurTransformation
-import kotlinx.android.synthetic.main.people_fragment.*
+
+import kotlinx.android.synthetic.main.fragment_search.toolbar
+import kotlinx.android.synthetic.main.resources_fragment.*
 import javax.inject.Inject
 
 
 class PeopleFragment : DaggerFragment(){
 
-    private lateinit var binding: PeopleFragmentBinding
+    private lateinit var binding: ResourcesFragmentBinding
     private lateinit var peopleViewModel: PeopleViewModel
 
     private lateinit var sharedViewModel: SharedViewModel
@@ -48,7 +45,7 @@ class PeopleFragment : DaggerFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.people_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.resources_fragment, container, false)
 
 
 
@@ -81,7 +78,7 @@ class PeopleFragment : DaggerFragment(){
         peopleViewModel.getPeople.observe(viewLifecycleOwner, Observer {peopleListItemViewModels ->
             peopleListAdapter = PeopleListAdapter()
             peopleListAdapter.onResults(peopleListItemViewModels)
-            peopleList.adapter = peopleListAdapter
+            list.adapter = peopleListAdapter
 
         })
 
@@ -100,20 +97,22 @@ class PeopleFragment : DaggerFragment(){
     }
 
     private fun initUi() {
-        binding.peopleList
 
         binding.collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
 
 
         //We could use databinding or ktx extensions
-        peopleList.itemAnimator = DefaultItemAnimator()
+        list.itemAnimator = DefaultItemAnimator()
 
 
         Glide.with(binding.root.context)
             .asBitmap()
             .load(Images.PEOPLE_BANNER_IMAGE)
             .centerCrop()
-            .into(binding.peopleBannerImage)
+            .into(binding.bannerImage)
+
+
+
 
 
 
