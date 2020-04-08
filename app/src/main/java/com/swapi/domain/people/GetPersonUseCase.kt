@@ -4,5 +4,5 @@ import com.swapi.data.api.model.people.People
 import io.reactivex.Single
 
 interface GetPersonUseCase{
-    fun invoke(id : String): Single<People>
+    fun invoke(url : String): Single<People>
 }

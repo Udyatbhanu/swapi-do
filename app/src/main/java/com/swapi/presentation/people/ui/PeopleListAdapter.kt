@@ -14,7 +14,7 @@ import com.swapi.presentation.people.viewmodel.PeopleListItemViewModel
 
 
 /**
- * https://www.zoftino.com/passing-data-between-android-fragments-using-viewmodel
+ *
  */
 class PeopleListAdapter () :
         RecyclerView.Adapter<PeopleListAdapter.ViewHolder>() {
@@ -80,7 +80,7 @@ class PeopleListAdapter () :
 
 
 
-                        var bundle = bundleOf("userName" to peopleListItemViewModel.name)
+                        var bundle = bundleOf("url" to peopleListItemViewModel.url)
                         it.findNavController().navigate(R.id.action_peopleFragment_to_peopleDetailsFragment, bundle)
                     }
                 }

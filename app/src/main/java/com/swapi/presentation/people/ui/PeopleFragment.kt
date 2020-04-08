@@ -116,14 +116,6 @@ class PeopleFragment : DaggerFragment(){
             .into(binding.peopleBannerImage)
 
 
-//        Glide.with(binding.root.context)
-//            .asBitmap()
-//            .load(Images.BACKGROUND)
-//            .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 5)))
-//            .centerCrop()
-//            .into(binding.background)
-
-
 
     }
 

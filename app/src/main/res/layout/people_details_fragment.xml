@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.swapi.presentation.people.viewmodel.PeopleViewModel" />
+            type="com.swapi.presentation.people.ui.PeopleDetailsFragment" />
 
     </data>
 
@@ -64,30 +64,80 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="32dp">
+                       >
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:padding="32dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.5"
+                                android:layout_alignParentStart="true"
                                 android:gravity="center"
-                                android:text="Something" />
+                                android:text="@string/name" />
 
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+
+                                android:gravity="center" />
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="32dp"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.5"
+                                android:layout_alignParentStart="true"
                                 android:gravity="center"
-                                android:text="Something" />
-                        </LinearLayout>
+                                android:text="@string/height" />
+
+
+                            <TextView
+                                android:id="@+id/height"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:gravity="center" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="32dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:gravity="center"
+                                android:text="@string/mass" />
+
+
+                            <TextView
+                                android:id="@+id/mass"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:gravity="center" />
+                        </RelativeLayout>
+
 
                     </LinearLayout>
+
+
                 </ScrollView>
             </androidx.cardview.widget.CardView>
 

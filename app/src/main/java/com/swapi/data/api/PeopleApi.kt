@@ -3,10 +3,12 @@ package com.swapi.data.api
 import com.swapi.data.api.Endpoints
 import com.swapi.data.api.model.people.People
 import com.swapi.data.api.model.people.PeopleResponse
+import com.swapi.data.api.model.people.PersonResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 
 /**
@@ -29,8 +31,8 @@ interface PeopleApi {
 
 
     /**
-     *
+     * Get person from url
      */
-    @GET(Endpoints.PEOPLE)
-    fun getPerson(@Path("id" )id: String): Single<People>
+    @GET
+    fun getPerson(@Url url: String): Single<PersonResponse>
 }

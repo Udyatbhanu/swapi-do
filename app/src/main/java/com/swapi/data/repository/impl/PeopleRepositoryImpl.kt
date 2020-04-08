@@ -22,7 +22,7 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleApi: PeopleApi)
     override fun getPeople(): Single<List<People>> {
         return peopleApi.getPeople().map {
             it.results.map { people ->
-                People(people.name,people.height, people.mass, people.films, people.species, people.vehicles, people.starships)
+                People(people.name,people.height, people.mass, people.films, people.species, people.vehicles, people.starships, people.url)
             }
         }
     }
@@ -34,7 +34,7 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleApi: PeopleApi)
     override fun searchPeople(query: String): Single<List<People>> {
         return peopleApi.searchPeople(query).map {
             it.results.map { people ->
-                People(people.name,people.height, people.mass, people.films, people.species, people.vehicles, people.starships)
+                People(people.name,people.height, people.mass, people.films, people.species, people.vehicles, people.starships, people.url)
             }
         }
     }
@@ -43,8 +43,12 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleApi: PeopleApi)
     /**
      *
      */
-    override fun getPerson(id: String): Single<People> {
-        return peopleApi.getPerson(id)
+    override fun getPerson(url: String): Single<People> {
+
+        return  peopleApi.getPerson(url).flatMap { people->
+            Single.just(People(people.name,people.height, people.mass, people.films, people.species, people.vehicles, people.starships, people.url ))
+        }
+
     }
 
 }

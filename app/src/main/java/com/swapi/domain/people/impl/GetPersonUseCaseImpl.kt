@@ -7,8 +7,8 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetPersonUseCaseImpl @Inject constructor(private val peopleRepository: PeopleRepository) : GetPersonUseCase {
-    override fun invoke(id: String): Single<People> {
-        return peopleRepository.getPerson(id)
+    override fun invoke(url: String): Single<People> {
+        return peopleRepository.getPerson(url)
     }
 
 }

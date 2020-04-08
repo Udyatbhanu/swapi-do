@@ -7,6 +7,7 @@ class PeopleListItemViewModel(people : People) : ViewModel(){
     val name = people.name
     val height = people.height
     val mass = people.mass
+    val url = people.url
 
     val filmCount = people.films?.size.toString()
 }
