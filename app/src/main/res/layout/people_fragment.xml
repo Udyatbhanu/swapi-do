@@ -113,6 +113,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
+                android:background="@null"
                 android:elevation="@dimen/space_8"
                 app:layout_collapseMode="pin"/>
 

@@ -81,7 +81,6 @@ class PeopleListAdapter () :
 
 
                         var bundle = bundleOf("userName" to peopleListItemViewModel.name)
-//                        sharedViewModel.selectedPersonItem
                         it.findNavController().navigate(R.id.action_peopleFragment_to_peopleDetailsFragment, bundle)
                     }
                 }

@@ -8,6 +8,9 @@ object Images{
 
 
     const val BACKGROUND =  "https://swapi-ubbs-cdn.s3-us-west-1.amazonaws.com/swapi-dev/background.jpg"
+    const val BACKGROUND_THEME =  "https://swapi-ubbs-cdn.s3-us-west-1.amazonaws.com/swapi-dev/backgrounf_theme1.jpg"
+
+
 
     const val PLANETS =  "https://swapi-ubbs-cdn.s3-us-west-1.amazonaws.com/swapi-dev/planets.jpeg"
 
