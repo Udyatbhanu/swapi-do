@@ -7,16 +7,39 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class FilmsRepositoryImpl @Inject constructor(private val filmsApi: FilmsApi) : FilmsRepository {
+
+
+    /**
+     *
+     */
     override fun getFilms(): Single<List<Film>> {
-        TODO("Not yet implemented")
+        return filmsApi.getFilms().map {
+            it.results.map { film ->
+                Film(film.director, film.episodeId, film.openingCrawl, film.producer, film.releaseDate, film.title, film.url )
+            }
+        }
     }
 
+
+    /**
+     *
+     */
     override fun searchFilms(query: String): Single<List<Film>> {
-        TODO("Not yet implemented")
+        return filmsApi.searchFilms(query).map {
+            it.results.map { film ->
+                Film(film.director, film.episodeId, film.openingCrawl, film.producer, film.releaseDate, film.title, film.url )
+            }
+        }
     }
 
-    override fun getFilm(id: String): Single<Film> {
-        TODO("Not yet implemented")
+
+    /**
+     *
+     */
+    override fun getFilm(url: String): Single<Film> {
+        return  filmsApi.getFilm(url).flatMap { film ->
+            Single.just(  Film(film.director, film.episodeId, film.openingCrawl, film.producer, film.releaseDate, film.title, film.url ))
+        }
     }
 
 }

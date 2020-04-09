@@ -12,4 +12,7 @@
 
 
     <color name="md_black">#222222</color>
+
+    <!-- error color -->
+    <color name="md_error_color">#C23C4C</color>
 </resources>

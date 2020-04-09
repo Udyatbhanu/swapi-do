@@ -1,5 +1,7 @@
 package com.swapi.data.api
 
+import com.swapi.data.api.model.film.Film
+import com.swapi.data.api.model.film.FilmResponse
 import com.swapi.data.api.model.film.FilmsResponse
 
 import io.reactivex.Single
@@ -27,5 +29,5 @@ interface FilmsApi {
      * Get Film from url
      */
     @GET
-    fun getFilm(@Url url: String): Single<FilmsResponse>
+    fun getFilm(@Url url: String): Single<FilmResponse>
 }

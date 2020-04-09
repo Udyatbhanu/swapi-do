@@ -32,14 +32,22 @@ class PeopleViewModel @Inject constructor(
 ) : ViewModel() {
     private var _peopleViewModelList = MutableLiveData<ArrayList<PeopleListItemViewModel>>()
 
-
-
+    private var _isLoading = MutableLiveData<Boolean>()
+    private var _errorState = MutableLiveData<Boolean>()
 
     private val searchQuerySubject = PublishSubject.create<String>()
     private var searchQueryDisposable = Disposables.disposed()
 
 
 
+
+
+    val getLoadState: LiveData<Boolean>
+        get() = _isLoading
+
+
+    val getErrorState: LiveData<Boolean>
+        get() = _errorState
 
     val getPeople: LiveData<ArrayList<PeopleListItemViewModel>>
         get() = _peopleViewModelList
@@ -49,13 +57,14 @@ class PeopleViewModel @Inject constructor(
 
 
     init {
+        _isLoading.value = true
         getPeople()
         searchQueryDisposable = searchQuerySubject
             .flatMapSingle { query ->
 
-                if (query.isNullOrEmpty()){
+                if (query.isNullOrEmpty()) {
                     getPeopleUseCase.invoke()
-                } else{
+                } else {
                     searchPeopleUseCase.invoke(query)
                 }
 
@@ -70,6 +79,7 @@ class PeopleViewModel @Inject constructor(
 
     @SuppressLint("CheckResult")
     private fun getPeople() {
+        _isLoading.value = true
         getPeopleUseCase.invoke()
             .subscribeOn(subscribeOnScheduler)
             .observeOn(observeOnScheduler)
@@ -77,7 +87,12 @@ class PeopleViewModel @Inject constructor(
     }
 
 
+    /**
+     * On success response
+     */
     private fun onResponse(people: List<People>) {
+        _isLoading.value = false
+        _errorState.value = false
         _peopleList.clear()
         people.map { item ->
             _peopleList.add(PeopleListItemViewModel(item))
@@ -86,18 +101,22 @@ class PeopleViewModel @Inject constructor(
         _peopleViewModelList.value = _peopleList
     }
 
+
+    /**
+     * Update the error state
+     */
     private fun onError(error: Throwable) {
-        error // TODO handle error state here
+        _isLoading.value = false
+        _errorState.value = true
     }
 
 
     /**
      *
      */
-    fun onQueryChange(query: String){
+    fun onQueryChange(query: String) {
         searchQuerySubject.onNext(query)
     }
-
 
 
     /**

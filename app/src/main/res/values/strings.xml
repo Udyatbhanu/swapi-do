@@ -18,4 +18,14 @@
     <string name="vehicles">Vehicles</string>
     <string name="startships">Starships</string>
 
+
+    <!--  Film -->
+    <string name="f_title">Title</string>
+    <string name="f_episode_id">Episode Id</string>
+    <string name="f_opening_Crawl">Crawl</string>
+    <string name="f_release_date">Release Date</string>
+    <string name="f_director">Director</string>
+
+
+    <string name="service_error">Oops! Star Ship has gone offline, please try again after sometime</string>
 </resources>

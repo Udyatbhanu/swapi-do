@@ -1,4 +1,4 @@
-package com.swapi.domain.films.usecase
+package com.swapi.domain.films
 
 import com.swapi.core.UseCase
 import com.swapi.data.api.model.film.Film

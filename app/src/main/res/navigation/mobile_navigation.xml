@@ -36,5 +36,18 @@
     <fragment
         android:id="@+id/filmsFragment"
         android:name="com.swapi.presentation.films.ui.FilmsFragment"
-        android:label="FilmsFragment" />
+        android:label="FilmsFragment" >
+        <action
+            android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
+            app:destination="@id/filmDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmDetailsFragment"
+        android:name="com.swapi.presentation.films.ui.FilmDetailsFragment"
+        android:label="FilmDetailsFragment"
+        >
+
+        <argument android:name="url"
+            android:defaultValue="url"/>
+    </fragment>
 </navigation>

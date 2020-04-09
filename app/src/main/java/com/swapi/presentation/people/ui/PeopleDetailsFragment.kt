@@ -31,7 +31,6 @@ class PeopleDetailsFragment : DaggerFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as? AppCompatActivity)?.supportActionBar?.show()
 
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
 
@@ -91,6 +90,8 @@ class PeopleDetailsFragment : DaggerFragment(){
 
     private fun subscribeUi() {
         peopleDetailsViewModel.getPerson.observe(viewLifecycleOwner, Observer {personViewModel ->
+
+          //we could use the view model as well.
           binding.name.text = personViewModel.name
           binding.height.text = personViewModel.height
           binding.mass.text = personViewModel.mass

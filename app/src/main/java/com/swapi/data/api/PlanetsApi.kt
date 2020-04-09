@@ -21,7 +21,7 @@ interface PlanetsApi {
     /**
      * Search Planets
      */
-    @GET(Endpoints.PEOPLE)
+    @GET(Endpoints.PLANETS)
     fun searchPeople(@Query("search") search: String): Single<PlanetsResponse>
 
 

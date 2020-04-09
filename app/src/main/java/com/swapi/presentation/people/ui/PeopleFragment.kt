@@ -7,18 +7,20 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
 import com.swapi.data.Images
 import com.swapi.databinding.ResourcesFragmentBinding
-import com.swapi.presentation.SharedViewModel
 import com.swapi.presentation.people.viewmodel.PeopleViewModel
 import dagger.android.support.DaggerFragment
 
@@ -31,8 +33,6 @@ class PeopleFragment : DaggerFragment(){
 
     private lateinit var binding: ResourcesFragmentBinding
     private lateinit var peopleViewModel: PeopleViewModel
-
-    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var peopleListAdapter: PeopleListAdapter
 
@@ -72,7 +72,7 @@ class PeopleFragment : DaggerFragment(){
 
 
     /**
-     *
+     * View model subscriptions
      */
     private fun subscribeUi() {
         peopleViewModel.getPeople.observe(viewLifecycleOwner, Observer {peopleListItemViewModels ->
@@ -93,6 +93,29 @@ class PeopleFragment : DaggerFragment(){
                 peopleViewModel.onQueryChange(s.toString())
             }
         } )
+
+        peopleViewModel.getLoadState.observe(viewLifecycleOwner, Observer {
+            if(it){
+                progressBarHolder.visibility = View.VISIBLE
+            } else{
+                progressBarHolder.visibility = View.GONE
+            }
+
+
+        } )
+
+        val errorSnackBar = Snackbar.make(binding.root,resources.getString(R.string.service_error), Snackbar.LENGTH_LONG)
+        val errorSnackBarView = errorSnackBar.view
+        errorSnackBarView.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.md_error_color))
+        val errorSnackBarTextView = errorSnackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        errorSnackBarTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_clear_black_24dp, 0, 0, 0)
+        errorSnackBarTextView.compoundDrawablePadding = resources.getDimensionPixelOffset(R.dimen.space_16)
+
+        peopleViewModel.getErrorState.observe(viewLifecycleOwner, Observer {
+            if(it){
+                errorSnackBar.show()
+            }
+        })
 
     }
 
@@ -119,12 +142,13 @@ class PeopleFragment : DaggerFragment(){
     }
 
 
-
+    /**
+     * Initialize view model
+     */
     private fun initViewModels(){
 
         activity?.let {
             peopleViewModel = ViewModelProvider(it, viewModelFactory).get(PeopleViewModel::class.java)
-            sharedViewModel = ViewModelProvider(it, viewModelFactory).get(SharedViewModel::class.java)
         }
 
 
