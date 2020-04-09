@@ -2,7 +2,9 @@ package com.swapi.core.dagger.module
 
 import com.swapi.presentation.MainActivity
 import com.swapi.presentation.MainFragment
+import com.swapi.presentation.films.ui.FilmDetailsFragment
 import com.swapi.presentation.films.ui.FilmsFragment
+import com.swapi.presentation.misc.ComingSoonFragment
 import com.swapi.presentation.people.ui.PeopleDetailsFragment
 import com.swapi.presentation.people.ui.PeopleFragment
 
@@ -33,7 +35,12 @@ abstract class BindingModule {
     abstract fun bindPeopleDetailsFragment(): PeopleDetailsFragment
 
 
+    @ContributesAndroidInjector
+    abstract fun bindComingSoonFragment(): ComingSoonFragment
 
+
+    @ContributesAndroidInjector
+    abstract fun bindFilmDetailsFragment(): FilmDetailsFragment
 
 
 

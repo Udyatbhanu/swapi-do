@@ -22,7 +22,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 /**
- *
+ * People view model, responsible for the people resource and search feature
  */
 class PeopleViewModel @Inject constructor(
     private val getPeopleUseCase: GetPeopleUseCase,
@@ -56,6 +56,9 @@ class PeopleViewModel @Inject constructor(
     private var _peopleList = ArrayList<PeopleListItemViewModel>()
 
 
+    /**
+     * This is one way of doing it
+     */
     init {
         _isLoading.value = true
         getPeople()
@@ -112,7 +115,7 @@ class PeopleViewModel @Inject constructor(
 
 
     /**
-     *
+     * Search query handler
      */
     fun onQueryChange(query: String) {
         searchQuerySubject.onNext(query)

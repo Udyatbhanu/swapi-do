@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_filmsFragment"
             app:destination="@id/filmsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_comingSoonFragment"
+            app:destination="@id/comingSoonFragment" />
     </fragment>
     <fragment
         android:id="@+id/peopleFragment"
@@ -50,4 +53,8 @@
         <argument android:name="url"
             android:defaultValue="url"/>
     </fragment>
+    <fragment
+        android:id="@+id/comingSoonFragment"
+        android:name="com.swapi.presentation.misc.ComingSoonFragment"
+        android:label="ComingSoonFragment" />
 </navigation>

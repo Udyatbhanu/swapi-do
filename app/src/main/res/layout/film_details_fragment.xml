@@ -56,14 +56,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="32dp"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="32dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -86,8 +85,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="32dp"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="32dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -108,8 +107,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="32dp"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="32dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -130,8 +129,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="32dp"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="32dp">
 
                             <TextView
                                 android:layout_width="wrap_content"

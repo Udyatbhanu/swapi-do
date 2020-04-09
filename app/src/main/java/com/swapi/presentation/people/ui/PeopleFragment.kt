@@ -94,15 +94,17 @@ class PeopleFragment : DaggerFragment(){
             }
         } )
 
+
+        /**
+         * Handle the progress bar state
+         */
         peopleViewModel.getLoadState.observe(viewLifecycleOwner, Observer {
             if(it){
                 progressBarHolder.visibility = View.VISIBLE
             } else{
                 progressBarHolder.visibility = View.GONE
             }
-
-
-        } )
+       } )
 
         val errorSnackBar = Snackbar.make(binding.root,resources.getString(R.string.service_error), Snackbar.LENGTH_LONG)
         val errorSnackBarView = errorSnackBar.view

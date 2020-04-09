@@ -16,6 +16,9 @@ object Images{
 
     const val STARSHIPS =  "https://swapi-ubbs-cdn.s3-us-west-1.amazonaws.com/swapi-dev/starships.jpg"
 
+    const val COMING_SOON =  "https://swapi-ubbs-cdn.s3-us-west-1.amazonaws.com/swapi-dev/coming-soon.jpeg"
+
+
 
 
 

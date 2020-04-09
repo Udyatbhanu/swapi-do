@@ -23,11 +23,6 @@ class MainFragment : DaggerFragment() {
     private lateinit var binding: MainFragmentBinding
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
 
 
     override fun onCreateView(
@@ -100,7 +95,18 @@ class MainFragment : DaggerFragment() {
             Navigation.findNavController(binding.root).navigate(R.id.filmsFragment)
         }
 
-        filmsLayout
+
+        //API down, wiring this for now
+
+        starshipsLayout.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.comingSoonFragment)
+        }
+
+
+        planetsLayout.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.comingSoonFragment)
+        }
+
     }
 
 

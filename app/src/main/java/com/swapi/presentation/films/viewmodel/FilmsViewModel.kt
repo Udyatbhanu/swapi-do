@@ -25,7 +25,8 @@ class FilmsViewModel @Inject constructor(
 
     private var _filmsListItemViewModel = MutableLiveData<ArrayList<FilmsListItemViewModel>>()
 
-
+    private var _isLoading = MutableLiveData<Boolean>()
+    private var _errorState = MutableLiveData<Boolean>()
 
 
     private val searchQuerySubject = PublishSubject.create<String>()
@@ -33,6 +34,12 @@ class FilmsViewModel @Inject constructor(
 
 
 
+    val getLoadState: LiveData<Boolean>
+        get() = _isLoading
+
+
+    val getErrorState: LiveData<Boolean>
+        get() = _errorState
 
     val getFilms: LiveData<ArrayList<FilmsListItemViewModel>>
         get() = _filmsListItemViewModel
@@ -42,6 +49,7 @@ class FilmsViewModel @Inject constructor(
 
 
     init {
+        _isLoading.value = true
         getFilms()
         searchQueryDisposable = searchQuerySubject
             .flatMapSingle { query ->
@@ -70,7 +78,12 @@ class FilmsViewModel @Inject constructor(
     }
 
 
+    /**
+     * Response handler
+     */
     private fun onResponse(people: List<Film>) {
+        _isLoading.value = false
+        _errorState.value = false
         _filmsList.clear()
         people.map { item ->
             _filmsList.add(FilmsListItemViewModel(item))
@@ -79,13 +92,17 @@ class FilmsViewModel @Inject constructor(
         _filmsListItemViewModel.value = _filmsList
     }
 
+    /**
+     * It would be good club this into one state view model
+     */
     private fun onError(error: Throwable) {
-        error // TODO handle error state here
+        _isLoading.value = false
+        _errorState.value = true
     }
 
 
     /**
-     *
+     * Search query handler
      */
     fun onQueryChange(query: String){
         searchQuerySubject.onNext(query)

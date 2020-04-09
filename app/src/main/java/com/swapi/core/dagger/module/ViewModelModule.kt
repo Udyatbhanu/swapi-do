@@ -27,7 +27,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(FilmsViewModel::class)
-    internal abstract  fun bindPFilmsViewModel(viewModel: FilmsViewModel) : ViewModel
+    internal abstract  fun bindFilmsViewModel(viewModel: FilmsViewModel) : ViewModel
 
     @Binds
     @IntoMap

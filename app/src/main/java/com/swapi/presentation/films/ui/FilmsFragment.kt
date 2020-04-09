@@ -7,13 +7,16 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.swapi.R
 import com.swapi.core.dagger.ViewModelFactory
 import com.swapi.data.Images
@@ -47,12 +50,13 @@ class FilmsFragment : DaggerFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.resources_fragment, container, false)
 
-
-
         return binding.root
     }
 
 
+    /**
+     *
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.show()
@@ -79,6 +83,10 @@ class FilmsFragment : DaggerFragment() {
 
         })
 
+
+        /**
+         * Search query text watcher
+         */
         searchInputText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
@@ -90,6 +98,37 @@ class FilmsFragment : DaggerFragment() {
                 filmsViewModel.onQueryChange(s.toString())
             }
         })
+
+
+        /**
+         * Handle the progress bar state
+         */
+        filmsViewModel.getLoadState.observe(viewLifecycleOwner, Observer {
+            if(it){
+                progressBarHolder.visibility = View.VISIBLE
+            } else{
+                progressBarHolder.visibility = View.GONE
+            }
+        } )
+
+
+        /**
+         * We want to show a snack bar on error state
+         */
+        val errorSnackBar = Snackbar.make(binding.root,resources.getString(R.string.service_error), Snackbar.LENGTH_LONG)
+        val errorSnackBarView = errorSnackBar.view
+        errorSnackBarView.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.md_error_color))
+        val errorSnackBarTextView = errorSnackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        errorSnackBarTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_clear_black_24dp, 0, 0, 0)
+        errorSnackBarTextView.compoundDrawablePadding = resources.getDimensionPixelOffset(R.dimen.space_16)
+
+
+        filmsViewModel.getErrorState.observe(viewLifecycleOwner, Observer {
+            if(it){
+                errorSnackBar.show()
+            }
+        })
+
 
     }
 

@@ -9,6 +9,10 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import javax.inject.Singleton
 
+
+/**
+ * AppComponent binds all the modules
+ */
 @Singleton
 @Component(
     modules = [
